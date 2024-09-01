@@ -1,12 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server'
 
 export const middleware = (req: NextRequest) => {
-  if (
-    process.env.BASIC_AUTH_DISABLED === 'true' ||
-    process.env.NODE_ENV === 'development'
-  )
-    return NextResponse.next()
-
   const basicAuth = req.headers.get('authorization')
 
   if (basicAuth) {
